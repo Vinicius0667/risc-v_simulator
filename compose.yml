@@ -1,0 +1,9 @@
+services:
+  riscv-sim:
+    build: .
+    container_name: riscv_simulator
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+    command: python main.py input.txt
