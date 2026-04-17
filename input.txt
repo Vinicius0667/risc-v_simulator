@@ -1,1 +1,1 @@
-# TODO risc-v code here
+addi t0, 10

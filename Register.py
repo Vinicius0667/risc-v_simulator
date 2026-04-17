@@ -11,7 +11,7 @@ class Register:
         self.abiName.update({f"s{i}": f"x{i+16}" for i in range(2, 12)})
         self.abiName.update({f"t{i}": f"x{i+25}" for i in range(3, 7)})
         
-    def save(self, name, value):
+    def write(self, name, value):
         realName = self.abiName.get(name, name)
         
         if realName == "x0":

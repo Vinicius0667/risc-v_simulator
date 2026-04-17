@@ -6,4 +6,4 @@ services:
       - .:/app
     stdin_open: true
     tty: true
-    command: python main.py input.txt
+    command: python risc-v.py input.txt
