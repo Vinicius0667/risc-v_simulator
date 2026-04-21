@@ -12,18 +12,21 @@ def setup():
     
     return register, {
         # I Instructions Type
-        'addi': iInstructions.addi,
+        'addi'  : iInstructions.addi,
         
         # U Instructions Type
-        # '',
+        'lui'   : uInstructions.lui,
+        'auipc' : uInstructions.auipc,
         
         # R Instructiosn Type
-        'add': rInstructions.add,
-        'sub': rInstructions.sub,
-        'xor': rInstructions.xor,
-        'or': rInstructions.orI,
-        'and': rInstructions.andI,
-        'sll': rInstructions.sll,
-        'srl': rInstructions.srl,
-        'sra': rInstructions.sra,
+        'add'   : rInstructions.add,
+        'sub'   : rInstructions.sub,
+        'xor'   : rInstructions.xor,
+        'or'    : rInstructions.orI,
+        'and'   : rInstructions.andI,
+        'sll'   : rInstructions.sll,
+        'srl'   : rInstructions.srl,
+        'sra'   : rInstructions.sra,
+        'slt'   : rInstructions.slt,
+        'sltu'  : rInstructions.sltu,
     }
