@@ -18,7 +18,7 @@ class Register:
             return
         
         self.registers[realName] = value
-        
+
     def read(self, name):
         realName = self.abiName.get(name, name)
         

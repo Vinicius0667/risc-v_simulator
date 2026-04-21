@@ -1,33 +1,35 @@
 import sys
 
-from Register import Register
-
-SUPPORTED_COMMANDS = ['add', 'addi', 'sub', 'lui', 'lw', 'sw']
+from instruction_map import setup
+from TraceWriter import TraceWriter
 
 def main():
-    register = Register()
-    file_path = sys.argv[1]
+    input_file_path = sys.argv[1] if len(sys.argv) > 1 else "input.txt"
+    output_file_path = sys.argv[2] if len(sys.argv) > 2 else "output.txt"
+
+    register, commands = setup()
+    traceWriter = TraceWriter(output_file_path)
 
     try:
-        with open (file_path, 'r') as file:
-            for pc, line in enumerate(file):
+        with open(input_file_path, "r") as input_file:
+            for pc, line in enumerate(input_file):
                 instruction = line.strip()
 
-                if not instruction or instruction.startswith('#'):
+                if not instruction or instruction.startswith("#"):
                     continue
 
-                commandPieces = instruction.replace(',', ' ').split()
-                command = commandPieces[0]
+                command, *args = instruction.replace(",", " ").split()
 
-                if command not in SUPPORTED_COMMANDS:
-                    print(f"Error, command: {command} not found, in line {pc}")
-                    sys.exit(1)
-                if command == 'addi':
-                    register.write(commandPieces[1], commandPieces[2])
+                if command in commands:
+                    output = commands[command](args)
+                    traceWriter.add_line(output)
+                else:
+                    traceWriter.add_line("Unknown Instruction")
+                    break
     except FileNotFoundError:
-        print(f"Error: File {file_path} not found!")
+        print(f"Error: File {input_file_path} not found!")
 
-    print(register.read('x5'))
+    traceWriter.write()
 
 if __name__ == "__main__":
     main()
