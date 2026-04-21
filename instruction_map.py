@@ -13,6 +13,10 @@ def setup():
     return register, {
         # I Instructions Type
         'addi': iInstructions.addi,
+        'xori': iInstructions.xori,
+        'ori': iInstructions.ori,
+        'andi': iInstructions.andi,
+        'slli': iInstructions.slli,
         
         # U Instructions Type
         # '',
