@@ -19,4 +19,11 @@ def setup():
         
         # R Instructiosn Type
         'add': rInstructions.add,
+        'sub': rInstructions.sub,
+        'xor': rInstructions.xor,
+        'or': rInstructions.orI,
+        'and': rInstructions.andI,
+        'sll': rInstructions.sll,
+        'srl': rInstructions.srl,
+        'sra': rInstructions.sra,
     }
