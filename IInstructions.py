@@ -1,8 +1,4 @@
-import re
-from ast import arg
-
 from Register import Register
-
 
 class IInstructions:
     def __init__(self, register: Register):
