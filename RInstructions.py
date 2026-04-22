@@ -34,7 +34,7 @@ class RInstructions:
 
         return f'{args[0]} = {result}\n'
     
-    def orI (self, args):
+    def orR (self, args):
         number1 = self.register.read(args[1])
         number2 = self.register.read(args[2])
         
@@ -44,7 +44,7 @@ class RInstructions:
 
         return f'{args[0]} = {result}\n'
     
-    def andI (self, args):
+    def andR (self, args):
         number1 = self.register.read(args[1])
         number2 = self.register.read(args[2])
         
