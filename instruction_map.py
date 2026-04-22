@@ -17,6 +17,10 @@ def setup():
         'ori': iInstructions.ori,
         'andi': iInstructions.andi,
         'slli': iInstructions.slli,
+        'srli': iInstructions.srli,
+        'srai': iInstructions.srai,
+        'slti': iInstructions.slti,
+        'sltiu': iInstructions.sltiu,
         
         # U Instructions Type
         'lui'   : uInstructions.lui,
