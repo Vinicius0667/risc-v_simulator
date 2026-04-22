@@ -1,7 +1,4 @@
 import unittest
-from ctypes import string_at
-from decimal import DefaultContext
-from pickletools import string1
 
 from IInstructions import IInstructions
 from Register import Register

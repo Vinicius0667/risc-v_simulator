@@ -1,4 +1,3 @@
-from ast import arg
 from Register import Register
 
 class IInstructions:

@@ -21,7 +21,7 @@ def main():
                 command, *args = instruction.replace(",", " ").split()      #salva a primeira frase/comando na variavel command e as outras frases na lista args
 
                 if command == 'auipc':                                      #caso a função a ser chamada é auipc ele envia pc como um argumento
-                    args[1] = pc
+                    args[1] = str(pc)
 
                 if command in commands:                                     #verifica se command se encontra na lista commands
                     output = commands[command](args)                        #salva a saida das funções rodadas utilizando command para procurar as funções guardadas em commands utilizando args como os argumentos
