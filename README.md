@@ -8,7 +8,7 @@ Para rodar o código, basta executar um dos comandos:
 
 `docker compose up`, ou
 `podman-compose up`, ou
-`python risc-v.py`
+`python risc_v.py`
 
 # Para rodar todos os testes
 
