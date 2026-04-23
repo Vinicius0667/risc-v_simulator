@@ -17,17 +17,23 @@ def main():
 
                 if not instruction or instruction.startswith("#"):          #se a linha estiver vazia ou a instrução começar com # deve ignorar pois é um comentario ou linha vazia
                     continue
+                clean_line = instruction.replace(",", " ").replace("(", " ").replace(")", " ")
+                command, *args = clean_line.split()      #salva a primeira frase/comando na variavel command e as outras frases na lista args
 
-                command, *args = instruction.replace(",", " ").split()      #salva a primeira frase/comando na variavel command e as outras frases na lista args
-
-                if command == 'auipc':                                      #caso a função a ser chamada é auipc ele envia pc como um argumento
-                    args[1] = str(pc)
+                if command == 'auipc':
+                    # Em vez de args[1] = str(pc), adicione o PC ao final
+                    args.append(str(pc)) 
+                
+                if command == 'jalr':
+                    # Garante que existam espaços para o PC se o usuário não digitou 4 args
+                    while len(args) < 3: args.append("0") 
+                    args.append(str(pc))
 
                 if command in commands:                                     #verifica se command se encontra na lista commands
                     output = commands[command](args)                        #salva a saida das funções rodadas utilizando command para procurar as funções guardadas em commands utilizando args como os argumentos
                     traceWriter.add_line(output)                            #salva a saida das funções executadas anteriormente para o arquivo de saida
                 else:
-                    traceWriter.add_line("Unknown Instruction")             #caso a função anterior não exista no dicionario de comandos é escrito que a instrução é invalida no arquivo de saida
+                    traceWriter.add_line("Error: Unknown Instruction")      #caso a função anterior não exista no dicionario de comandos é escrito que a instrução é invalida no arquivo de saida
                     break
 
     except FileNotFoundError:

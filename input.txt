@@ -1,3 +1,42 @@
-addi t0, zero, -4
-addi t1, zero, 1
-srl t2, t0, t1
+# --- Testes de Instruções Tipo I (Imediatos e Memória) ---
+addi t0, zero, 10
+addi t1, t0, -5
+xori t2, t1, 0xF
+ori t3, zero, 7
+andi t4, t3, 2
+slli s1, t0, 2
+srli s2, t0, 1
+srai s3, t1, 1
+slti s4, t1, 10
+sltiu s5, t1, 10
+
+# --- Testes de Memória (Store/Load dependem de I e S) ---
+# Nota: Como não vimos a classe SInstructions, 
+# usaremos apenas os Loads assumindo valores prévios se possível
+lw a0, 0(zero)
+lb a1, 0(t0)
+lbu a2, 0(t0)
+
+# --- Testes de Instruções Tipo R (Registrador-Registrador) ---
+add t5, t0, t1
+sub t6, t0, t1
+xor a3, t5, t6
+or a4, t0, zero
+and a5, t0, t1
+sll a6, t0, t4
+srl a7, t0, t4
+sra s6, t1, t4
+slt s7, t1, t0
+sltu s8, t0, t1
+
+# --- Testes de Instruções Tipo U (Larga Escala) ---
+lui gp, 0x12345
+auipc sp, 1
+
+# --- Testes de Fluxo e Sistema ---
+jalr ra, 4(zero)
+ecall
+ebreak
+
+# --- Teste de Proteção ---
+addi zero, zero, 100

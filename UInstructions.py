@@ -1,22 +1,26 @@
-from Register import Register
+from Register import Register                                               # Importa a classe Register para manipular os registradores
 
 class UInstructions:
     def __init__(self, register: Register):
-        self.register = register
+        self.register = register                                            # Armazena a referência do banco de registradores
 
     def lui(self, args):
-        number1 = self.register.read(args[1])
+        # O erro acontecia aqui: args[1] vinha como "t1" em vez de um número
+        immediate = int(str(args[1]), 0)                                    # Converte o imediato (pode ser "10" ou "0x10")
 
-        result = number1 << 12
+        result = immediate << 12                                            # Desloca 12 bits para a esquerda
 
-        self.register.write(args[0], result)
+        self.register.write(args[0], result)                                # Salva no registrador de destino (rd)
 
         return f"{args[0]} = {result}\n"
 
     def auipc(self, args):
-        number1 = self.register.read(args[1])
-        result = number1 << 12
+        immediate = int(str(args[1]), 0)                                    # Converte o imediato
+        # Garante que o PC seja um inteiro; se não houver args[2], assume 0
+        pc = int(args[2]) if len(args) > 2 else 0
 
-        self.register.write(args[0], result)
+        result = pc + (immediate << 12)                                     # Soma PC ao imediato deslocado
+
+        self.register.write(args[0], result)                                # Salva no registrador rd
 
         return f"{args[0]} = {result}\n"
