@@ -14,8 +14,6 @@ class Register:
     def write(self, name, value):
         realName = self.abiName.get(name, name)                             # Retorna o equivalente de name (ABI) para o nome real x0-x31
         
-        print()
-        
         if realName in ["x0", "zero"]:                                                # Impede a escrita no registro x0, que deve ser sempre zero no RISC-V
             return
         

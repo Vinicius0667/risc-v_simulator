@@ -1,0 +1,29 @@
+t0 = 10
+t1 = 5
+t2 = 10
+t3 = 7
+t4 = 2
+s1 = 40
+s2 = 5
+s3 = 2
+s4 = 1
+s5 = 1
+a0 = 0
+a1 = 0
+a2 = 0
+t5 = 15
+t6 = 5
+a3 = 10
+a4 = 10
+a5 = 0
+a6 = 40
+a7 = 2
+s6 = 1
+s7 = 1
+s8 = 0
+gp = 305418240
+sp = 4129
+NEXT_PC=4
+Environment Call
+Breakpoint
+zero = 0

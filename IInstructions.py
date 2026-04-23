@@ -10,7 +10,11 @@ class IInstructions:
         register_value = self.register.read(args[1])                        # Lê o valor do registrador de origem
         result = register_value + int(str(args[2]), 0)                      # Soma o valor lido ao imediato (aceita hex ou dec)
 
+        if args[0] in ['x0', 'zero']:
+            result = 0
+
         self.register.write(args[0], result)                                # Escreve o resultado no registrador de destino
+        
 
         return f"{args[0]} = {result}\n"                                    # Retorna a string de log da operação
 

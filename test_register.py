@@ -34,3 +34,7 @@ class TestRegister(unittest.TestCase):
         
     def testNonExistentRegister(self):
         self.assertEqual(self.register.read("test"), 0)                     # Valida que a leitura de um nome inexistente retorna 0 por padrão
+    
+    def testZeroIsNotWritable(self):
+        self.register.write("x0", 999)                                      # Tenta escrever no registrador x0 (deve ser imutável)
+        self.assertEqual(self.register.read("x0"), 0)                       # Verifica se ele permanece em 0
